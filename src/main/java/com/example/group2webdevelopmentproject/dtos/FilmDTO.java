@@ -14,7 +14,8 @@ public class FilmDTO {
     private BigDecimal rentalRate;
     private BigDecimal replacementCost;
     private Short rentalDuration;
-
+    private String rating;
+    private String specialFeatures;
 
     public Integer getId() {
         return id;
@@ -88,4 +89,36 @@ public class FilmDTO {
         this.rentalDuration = rentalDuration;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public String getSpecialFeatures() {
+        return specialFeatures;
+    }
+
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", language='" + language + '\'' +
+                ", length=" + length +
+                ", rentalRate=" + rentalRate +
+                ", replacementCost=" + replacementCost +
+                ", rentalDuration=" + rentalDuration +
+                ", rating='" + rating + '\'' +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                '}';
+    }
 }

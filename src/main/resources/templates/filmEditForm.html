@@ -29,9 +29,11 @@
     <input type="text" id="replacementCost" name="replacementCost" th:field="*{replacementCost}"/>
     <label for="rating">Rating</label>
     <input type="text" id="rating" name="rating" th:field="*{rating}"/>
+    <label for="rating">Rental Rate</label>
+    <input type="text" id="rentalRate" name="rentalRate" th:field="*{rentalRate}"/>
     <label for="specialFeatures">Special Features</label>
     <input type="text" id="specialFeatures" name="specialFeatures" th:field="*{specialFeatures}"/>
-
+    <input type = "hidden" id="id" name = "id" th:field="*{id}"/>
     <input type="submit" value="Submit Update"/>
 </form>
 </body>

@@ -15,6 +15,8 @@ public class DTOconverter {
         fadto.setRentalDuration(film.getRentalDuration());
         fadto.setRentalRate(film.getRentalRate());
         fadto.setReplacementCost(film.getReplacementCost());
+        fadto.setRating(film.getRating());
+        fadto.setSpecialFeatures(film.getSpecialFeatures());
 
         return fadto;
     }
