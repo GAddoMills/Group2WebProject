@@ -28,11 +28,15 @@ public class FilmController {
 
     @GetMapping("films/edit/{id}")
     public String displayFilmEditForm(@PathVariable int id, Model model){
-        Optional<Film> film = Filmrepo.findById(id);
-        
-
-        model.addAttribute("filmToEdit", film);
-        return "filmEditForm";
+        Optional<Film> optFilm = Filmrepo.findById(id);
+        if (optFilm.isEmpty()) {
+            // todo: log an error, redirect to error message with reason.
+            return "errorPage";
+        } else {
+            Film film = optFilm.get();
+            model.addAttribute("filmToEdit", film);
+            return "filmEditForm";
+        }
     }
     @PostMapping("films/update")
     public String updateFilm(@ModelAttribute("filmToEdit") Film film){
