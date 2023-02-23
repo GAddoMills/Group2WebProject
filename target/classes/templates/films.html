@@ -44,7 +44,7 @@
     <td th:text="${film.replacementCost}"></td>
     <td th:text="${film.rating}"></td>
     <td th:text="${film.specialFeatures}"></td>
-    <td><a class= button th:href="@{/films/edit/{id}(id=${film.id})}">Edit</a></td>
+    <td><a class= button th:href="@{/actors/edit/{id}(id=${film.id})}">Edit</a></td>
     <td><a th:href="@{/actors/delete/{id}(id=${film.id})}">Delete</a></td>
   </tr>
 </table>
