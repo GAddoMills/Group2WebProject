@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actor Details Form</title>
+    <link rel="stylesheet" href="../css/styling.css"/>
+</head>
+<body>
+<ul>
+    <li><a class=active href="http://localhost:8080/actors">Home</a></li>
+    <li><a href="http://localhost:8080/films">Films</a></li>
+    <li style="float:right"><a href="http://localhost:8080/actors/createForm">Create new Actor</a></li>
+
+</ul>
+<h1>Actor Create Form</h1>
+<form th:action="@{/actors/create}" th:object="${actorToCreate}" method="POST">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" th:field="*{firstName}"/>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" th:field="*{lastName}"/>
+    <input type="hidden" id="id" name="id" th:field="*{id}"/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
