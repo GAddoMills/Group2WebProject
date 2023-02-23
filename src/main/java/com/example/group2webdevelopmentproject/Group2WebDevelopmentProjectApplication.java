@@ -8,6 +8,7 @@ public class Group2WebDevelopmentProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(Group2WebDevelopmentProjectApplication.class, args);
+        
     }
 
 }
