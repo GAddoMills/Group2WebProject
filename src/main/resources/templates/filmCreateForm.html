@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Actor</title>
-    <link rel="stylesheet" href="../css/stylingSheet.css"/>
+    <title>Add Film</title>
+    <link rel="stylesheet" href="../css/styleGroup2.css"/>
 </head>
-<body>
-<h1>Add Actor</h1>
+<body class="imageBack">
+<header>
+    <a href="default.asp" target="_blank">Home</a>
+</header>
 <form th:action="@{/films/add}" th:object="${newFilm}" method="post">
-    <label for="title">Title:</label>
-    <input type="text" id="title" th:field="*{title}" >
-    <label for="description">Description:</label>
+    <h1>Add Film</h1>
+    <label for="title">Title: *</label><br>
+    <input type="text" id="title" th:field="*{title}"><br>
+    <label for="description">Description:</label><br>
     <textarea id="description" th:field="*{description}" ></textarea><br>
-    <label for="language">Language:</label>
+    <label for="language">Language: *</label><br>
     <select id="language" th:field="*{language}">
         <option value="English">English</option>
         <option value="French">French</option>
         <option value="German">German</option>
     </select><br>
-    <label for="releaseYear">Release Year:</label>
-    <input type="text" id="releaseYear" th:field="*{releaseYear}" >
-    <label for="length">Length:</label>
-    <input type="number" min="0" max="500" id="length" th:field="*{length}" ><br>
-    <label for="rating">Rating:</label>
+    <label for="releaseYear">Release Year:</label><br>
+    <input type="text" id="releaseYear" th:field="*{releaseYear}"><br>
+    <label for="length">Length:</label><br>
+    <input type="number" min="0" max="500" id="length" th:field="*{length}"><br>
+    <label for="rating">Rating:</label><br>
     <select id="rating" th:field="*{rating}">
         <option value="PG">PG</option>
         <option value="PG-13">PG-13</option>
@@ -30,7 +33,7 @@
         <option value="R">R</option>
     </select><br>
 <!--    <input type="text" id="rating" th:field="*{rating}" >-->
-    <label for="rentalDuration">Rental Duration:</label>
+    <label for="rentalDuration">Rental Duration: *</label><br>
     <select id="rentalDuration" th:field="*{rentalDuration}">
         <option value="2">2</option>
         <option value="3">3</option>
@@ -40,11 +43,11 @@
         <option value="7">7</option>
     </select><br>
 <!--    <input type="text" id="rentalDuration" th:field="*{rentalDuration}" >-->
-    <label for="rentalRate">Rental Rate:</label>
-    <input type="text" id="rentalRate" th:field="*{rentalRate}" >
-    <label for="replacementCost">Replacement Cost:</label>
-    <input type="text" id="replacementCost" th:field="*{replacementCost}" >
-    <label for="specialFeatures">Special Features:</label>
+    <label for="rentalRate">Rental Rate: *</label><br>
+    <input type="text" id="rentalRate" th:field="*{rentalRate}"><br>
+    <label for="replacementCost">Replacement Cost: *</label><br>
+    <input type="text" id="replacementCost" th:field="*{replacementCost}"><br>
+    <label for="specialFeatures">Special Features:</label><br>
 <!--    <input type="text" id="specialFeatures" th:field="*{specialFeatures}" >-->
     <select id="specialFeatures" th:field="*{specialFeatures}">
         <option value="Behind the Scenes">Behind the Scenes</option>
@@ -53,5 +56,6 @@
     </select><br>
     <input type="submit" value="Save">
 </form>
+<footer>Group 2 Web Development Project</footer>
 </body>
 </html>
