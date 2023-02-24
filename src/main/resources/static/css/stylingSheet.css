@@ -1,0 +1,68 @@
+/* for actors table view */
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: #6699CC;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* for actor add and edit form */
+h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: #6699CC;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4d80b3;
+}

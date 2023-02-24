@@ -21,20 +21,20 @@ import java.util.Optional;
 @Controller
 public class FilmController {
     @Autowired
-    private FilmRepository Filmrepo;
+    private FilmRepository filmrepo;
     @Autowired
     private LanguageRepository languageRepository;
 
     @GetMapping("films")
     public String getActors(Model model) {
-        List<Film> films = Filmrepo.findAll();
+        List<Film> films = filmrepo.findAll();
         model.addAttribute("films", films);
         return "films";
     }
 
     @GetMapping("films/edit/{id}")
     public String displayFilmEditForm(@PathVariable int id, Model model){
-        Optional<Film> optFilm = Filmrepo.findById(id);
+        Optional<Film> optFilm = filmrepo.findById(id);
         if (optFilm.isEmpty()) {
             // todo: log an error, redirect to error message with reason.
             return "errorPage";
@@ -61,8 +61,37 @@ public class FilmController {
         film.setReplacementCost(dto.getReplacementCost());
         film.setSpecialFeatures(dto.getSpecialFeatures());
         film.setTitle(dto.getTitle());
-        Filmrepo.saveAndFlush(film);
+        filmrepo.saveAndFlush(film);
         return "editSuccess";
     }
+
+    @PostMapping ("films/add")
+    public String addFilm(@ModelAttribute("newFilm") FilmDTO dto){
+        Film film = new Film();
+        Language language = languageRepository.findByName(dto.getLanguage());
+        film.setDescription(dto.getDescription());
+        film.setLanguage(language);
+        film.setLength(dto.getLength());
+        film.setRating(dto.getRating());
+        film.setReleaseYear(dto.getReleaseYear());
+        film.setRentalDuration(dto.getRentalDuration());
+        film.setRentalRate(dto.getRentalRate());
+        film.setReplacementCost(dto.getReplacementCost());
+        film.setSpecialFeatures(dto.getSpecialFeatures());
+        film.setTitle(dto.getTitle());
+        film.setLastUpdate(Instant.now());
+
+        filmrepo.saveAndFlush(film);
+        return "addSuccess";
+    }
+
+    @GetMapping("films/new")
+    public String displayActorCreateForm(Model model) {
+        model.addAttribute("newFilm", new Film());
+        return "filmCreateForm";
+    }
+
+
+
 
 }
