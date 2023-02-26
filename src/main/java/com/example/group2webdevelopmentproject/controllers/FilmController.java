@@ -6,6 +6,8 @@ import com.example.group2webdevelopmentproject.entities.Language;
 import com.example.group2webdevelopmentproject.repository.FilmRepository;
 import com.example.group2webdevelopmentproject.repository.LanguageRepository;
 import com.example.group2webdevelopmentproject.utils.DTOconverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +15,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class FilmController {
+
+    Logger logger = LoggerFactory.getLogger(FilmController.class);
     @Autowired
     private FilmRepository filmrepo;
     @Autowired
     private LanguageRepository languageRepository;
 
     @GetMapping("films")
-    public String getActors(Model model) {
+    public String getFilms(Model model) {
+        logger.debug("Get all films method");
         List<Film> films = filmrepo.findAll();
         model.addAttribute("films", films);
         return "films";
@@ -34,9 +38,10 @@ public class FilmController {
 
     @GetMapping("films/edit/{id}")
     public String displayFilmEditForm(@PathVariable int id, Model model){
+        logger.debug("Edit film requested");
         Optional<Film> optFilm = filmrepo.findById(id);
         if (optFilm.isEmpty()) {
-            // todo: log an error, redirect to error message with reason.
+            logger.warn("Film " + id + " not found on the database.");
             return "errorPage";
         } else {
             Film film = optFilm.get();
@@ -47,6 +52,7 @@ public class FilmController {
     }
     @PostMapping("films/update")
     public String updateFilm(@ModelAttribute("filmToEdit") FilmDTO dto) {
+        logger.debug("Post method received for update film: " + dto);
         Film film = new Film();
         Language language = languageRepository.findByName(dto.getLanguage());
         film.setDescription(dto.getDescription());
@@ -67,6 +73,7 @@ public class FilmController {
 
     @PostMapping ("films/add")
     public String addFilm(@ModelAttribute("newFilm") FilmDTO dto){
+        logger.debug("Post request for add new film");
         Film film = new Film();
         Language language = languageRepository.findByName(dto.getLanguage());
         film.setDescription(dto.getDescription());
@@ -86,12 +93,11 @@ public class FilmController {
     }
 
     @GetMapping("films/new")
-    public String displayActorCreateForm(Model model) {
+    public String createNewFilmForm (Model model) {
+        logger.debug("Get method for creating a new film");
         model.addAttribute("newFilm", new Film());
         return "filmCreateForm";
     }
-
-
 
 
 }
