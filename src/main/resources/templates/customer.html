@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+    <link rel="stylesheet" href="../css/styling.css"/>
+</head>
+<body>
+<h1>Customer Details </h1>
+
+<!--<h1 th:text="${customer.lastName}"> </h1>-->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>District</th>
+        <th>Postal Code</th>
+        <th>Phone Number</th>
+        <th>Active</th>
+        <th>Create Date</th>
+        <th>Last Update</th>
+    </tr>
+    </thead>
+    <tr>
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.address.address}" ></td>
+        <td th:text="${customer.address.district}" ></td>
+        <td th:text="${customer.address.postalCode}"></td>
+
+        <td th:text="${customer.address.phone}"></td>
+        <td th:text="${customer.active}"></td>
+        <td th:text="${#temporals.format(customer.createDate, 'dd-MMM-yyyy hh:mm a')}"></td>
+        <td th:text="${#temporals.format(customer.lastUpdate, 'dd-MMM-yyyy hh:mm a')}"></td>
+<!--       <td><a class= button th:href="@{/c/{id}(id=${film.id})}">Edit</a></td>-->
+        <!--        <td><a th:href="@{/actors/delete/{id}(id=${film.id})}">Delete</a></td>-->
+
+    </tr>
+</table>
+<!--<button type="button" th:href="@{/rentals}" > Go Back</button>-->
+<a th:href="@{/rentals}">Go back</a>
+
+
+</body>
+</html>

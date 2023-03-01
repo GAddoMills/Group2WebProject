@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rentals Details</title>
+    <link rel="stylesheet" href="../css/styling.css"/>
+</head>
+<body>
+<h1>Rental Details</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Rental Date</th>
+        <th>Inventory ID</th>
+        <th>Customer ID</th>
+        <th>Return Date</th>
+        <th>Staff ID</th>
+        <th>Last Update</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+
+    </tr>
+    </thead>
+    <tr th:each="rental : ${rentals}">
+        <td th:text="${rental.id}"></td>
+        <td th:text="${#temporals.format(rental.rentalDate, 'dd-MMM-yyyy hh:mm a')}"></td>
+        <td th:text="${rental.inventory.id}"></td>
+        <td th:text="${rental.customer.id}"><a th:href="@{/customer/{id}(id=${rental.customer.id})}">View</a></td>
+        <td th:text="${#temporals.format(rental.returnDate, 'dd-MMM-yyyy hh:mm a')}"></td>
+        <td th:text="${rental.staff.id}"></td>
+        <td th:text="${#temporals.format(rental.lastUpdate, 'dd-MMM-yyyy hh:mm a')}"></td>
+        <td><a class= button th:href="@{/rentals/edit/{id}(id=${rental.id})}">Edit</a></td>
+        <td><a th:href="@{/rentals/delete/{id}(id=${rental.id})}">Delete</a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>
