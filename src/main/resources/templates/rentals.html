@@ -6,8 +6,14 @@
     <link rel="stylesheet" href="../css/stylingSheet.css"/>
 </head>
 <body>
+<ul>
+    <li><a  class=active href="">Rental</a></li>
+    <li><a href="http://localhost:8080/films">Films</a></li>
+    <li style="float:right"><a th:href="@{/rentals/create}">Create new Rental</a></li>
+
+</ul>
 <h1>Rental Details</h1>
-<a th:href="@{/rentals/create}">Add New Rental</a>
+
 <table>
     <thead>
     <tr>

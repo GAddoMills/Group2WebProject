@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="../css/styleGroup2.css"/>
 </head>
 <body class="imageBack">
-<header>    <a href="default.asp" target="_blank">Home</a></header>
+<ul>
+    <li><a  href="http://localhost:8080/rentals">Rental</a></li>
+    <li><a class=active href="http://localhost:8080/films">Films</a></li>
+
+</ul>
 <form th:action="@{/films/add}" th:object="${newFilm}" method="post">
     <h1>Add Film</h1>
     <label for="title">Title: *</label><br>    <input type="text" id="title" th:field="*{title}"><br>    <label for="description">Description:</label><br>

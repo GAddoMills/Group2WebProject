@@ -5,6 +5,11 @@
     <title>Rental Edit</title>
 </head>
 <body>
+<ul>
+    <li><a  href="http://localhost:8080/rentals">Rental</a></li>
+    <li><a class=active href="http://localhost:8080/films">Films</a></li>
+
+</ul>
 <h1>Rental Edit Form</h1>
 <form th:action="@{/rentals/update}" th:object="${rentalToEdit}" method="POST">
   <label for="Inventory">Inventory ID</label>

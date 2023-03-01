@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Group2WebDevelopmentProject" />
+        <module name="Group2WebProject" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Group2WebDevelopmentProject" options="-parameters" />
+      <module name="Group2WebProject" options="-parameters" />
     </option>
   </component>
 </project>
