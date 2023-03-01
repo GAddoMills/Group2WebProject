@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Edit</title>
+</head>
+<body>
+<h1>Rental Edit Form</h1>
+<form th:action="@{/rentals/update}" th:object="${rentalToEdit}" method="POST">
+  <label for="Inventory">Inventory ID</label>
+  <input type="text" id="Inventory" name="inventory" th:field="*{inventory}"/>
+  <label for="Customer">Customer ID</label>
+  <input type="text" id="Customer" name="customer" th:field="*{customer}"/>
+  <label for="Staff">Staff ID</label>
+  <input type="text" id="Staff" name="Staff" th:field="*{staff}"/>
+
+  <input type = "hidden" id="id" name = "id" th:field="*{id}"/>
+  <input type="submit" value="Submit Update"/>
+</form>
+
+
+</body>
+</html>
