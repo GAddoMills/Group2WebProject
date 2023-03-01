@@ -12,13 +12,18 @@
 
 </ul>
 <h1>Add Rental</h1>
-<form action="/rentals/createSuccess" method="post">
-    <label for="Inventory">Inventory ID</label>
-    <input type="text" id="Inventory" name="inventory"><br><br>
+<form th:action="@{/rentals/add}" th:object="${rentalToCreate}" method="post">
+    <label for="inventory">Inventory ID</label>
+    <input type="text" id="inventory" th:field="*{inventory}">
     <label for="Customer">Customer</label>
-    <input type="text" id="Customer" name="customer"><br><br>
+    <input type="text" id="Customer" th:field="*{customer}">
     <label for="Staff">Staff</label>
-    <input type="text" id="Staff" name="staff"><br><br>
+    <input type="text" id="Staff" th:field="*{staff}">
+    <label for="rentalDate">Rental Date</label>
+    <input type="text" id="rentalDate"  th:field="*{rentalDate}">
+    <label for="returnDate">Return Date</label>
+    <input type="text" id="returnDate" th:field="*{returnDate}">
+
 
     <input type="submit" value="Save">
 </form>
