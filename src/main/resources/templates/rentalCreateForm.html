@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Actor</title>
+    <link rel="stylesheet" href="../css/styleGroup2.css"/>
+
 </head>
 <body>
+<h1>Add Actor</h1>
+<form action="/rentals/createSuccess" method="post">
+    <label for="Inventory">Inventory ID</label>
+    <input type="text" id="Inventory" name="inventory"><br><br>
+    <label for="Customer">Customer</label>
+    <input type="text" id="Customer" name="customer"><br><br>
+    <label for="Staff">Staff</label>
+    <input type="text" id="Staff" name="staff"><br><br>
 
+    <input type="submit" value="Save">
+</form>
 </body>
 </html>

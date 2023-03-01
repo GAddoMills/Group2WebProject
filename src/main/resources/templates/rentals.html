@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Rentals Details</title>
-    <link rel="stylesheet" href="../css/styling.css"/>
+    <link rel="stylesheet" href="../css/stylingSheet.css"/>
 </head>
 <body>
 <h1>Rental Details</h1>
+<a th:href="@{/rentals/create}">Add New Rental</a>
 <table>
     <thead>
     <tr>
@@ -27,7 +28,10 @@
         <td th:text="${rental.id}"></td>
         <td th:text="${#temporals.format(rental.rentalDate, 'dd-MMM-yyyy hh:mm a')}"></td>
         <td th:text="${rental.inventory.id}"></td>
-        <td th:text="${rental.customer.id}"><a th:href="@{/customer/{id}(id=${rental.customer.id})}">View</a></td>
+        <td>
+            <a th:href="@{/customer/{id}(id=${rental.customer.id})}" th:text="${rental.customer.id}"  ></a>
+        </td>
+<!--        <td th:text="${rental.customer.id}" ><a th:href="@{/customer/{id}(id=${rental.customer.id})}">View</a></td>-->
         <td th:text="${#temporals.format(rental.returnDate, 'dd-MMM-yyyy hh:mm a')}"></td>
         <td th:text="${rental.staff.id}"></td>
         <td th:text="${#temporals.format(rental.lastUpdate, 'dd-MMM-yyyy hh:mm a')}"></td>

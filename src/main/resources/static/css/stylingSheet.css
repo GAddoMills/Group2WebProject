@@ -6,7 +6,7 @@ table {
 }
 
 th {
-    background-color: #6699CC;
+    background-color: #791332;
     color: white;
     font-weight: bold;
     text-align: left;
@@ -54,7 +54,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    background-color: #6699CC;
+    background-color: #791332;
     color: white;
     padding: 8px 16px;
     border: none;
@@ -64,5 +64,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #4d80b3;
+    background-color: #791332;
 }
