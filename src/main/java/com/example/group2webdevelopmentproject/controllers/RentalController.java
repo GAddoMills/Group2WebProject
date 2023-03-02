@@ -51,8 +51,14 @@ public class RentalController {
 //DELETE RENTALS
     @GetMapping("rentals/delete/{id}")
     public String deleteRental(@PathVariable int id){
-        rentalRepo.delete(rentalRepo.findById(id).get());
-        return "deleteRental";
+        Optional<Rental> optRental =  rentalRepo.findById(id);
+        if (optRental.isPresent()) {
+            rentalRepo.delete(rentalRepo.findById(id).get());
+            return "deleteRental";
+        } else {
+            // TODO logging
+            return "errorPage";
+        }
     }
 //EDIT RENTALS
     @GetMapping("rentals/edit/{id}")
