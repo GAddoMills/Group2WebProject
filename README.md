@@ -16,6 +16,7 @@ With the Project and database up and running you can do the following:
 
 ### Index
 This is where you want start, use the url: http://localhost:8080/index to get to the index page and here you will see the differnt tables you can view. In this current version of the project you will be able to access the film and rentals table.
+![image](https://user-images.githubusercontent.com/21173813/222476952-b1cce93d-dc9f-4bf2-82fd-d28bc73a25a4.png)
 
 ### Navigation 
 Once entering one of the two tables you will be able to see the all the entries for the your chosen table. Every page will include a navigation bar at the top of the site where the user is able to navigate between the two tables with ease. On the right hand side of the nav bar there is a **Create** button that will allow you to create a new entry into the table you are currently viewing. <br>
