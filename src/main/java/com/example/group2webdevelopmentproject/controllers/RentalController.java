@@ -88,14 +88,13 @@ public class RentalController {
     public String createdRental(@ModelAttribute("rentalToCreate") RentalDTO dto){
         Rental rental =new Rental();
 
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm ", Locale.UK);  // Specify locale to determine human language and cultural norms used in translating that input string.
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");  // Specify locale to determine human language and cultural norms used in translating that input string.
         LocalDateTime rentalDate = LocalDateTime.parse(dto.getRentalDate(), f);
         LocalDateTime returnDate = LocalDateTime.parse(dto.getReturnDate(), f);
 
-        ZoneId zoneId = ZoneId.of("UTC/Greenwich");
+        ZoneId zoneId = ZoneId.of("UTC-0");
         ZonedDateTime zonedrentalDate = rentalDate.atZone(zoneId);
         ZonedDateTime zonedreturnDate = returnDate.atZone(zoneId);
-
 
         Optional<Inventory> inventory = inventRepo.findById(dto.getInventory());
         Optional <Customer> customer = customerRepo.findById(dto.getCustomer());
