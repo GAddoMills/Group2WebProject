@@ -8,6 +8,7 @@ import com.example.group2webdevelopmentproject.repository.RentalRepository;
 import com.example.group2webdevelopmentproject.repository.StaffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -84,11 +85,12 @@ public class RentalController {
 //CREATE RENTALS
     @GetMapping("rentals/create")
     public String createRental(Model model){
-        Rental rental = new Rental();
+        RentalDTO rental = new RentalDTO();
         model.addAttribute("rentalToCreate", rental);
         return "rentalCreateForm";
     }
 
+    @Transactional
     @PostMapping("rentals/add")
     public String createdRental(@ModelAttribute("rentalToCreate") RentalDTO dto){
         Rental rental =new Rental();

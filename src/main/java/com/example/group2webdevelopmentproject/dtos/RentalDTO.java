@@ -14,14 +14,14 @@ public class RentalDTO {
 
     private String returnDate;
 
-    private int staff;
+    private int staffId;
 
     public int getStaffId() {
-        return staff;
+        return staffId;
     }
 
-    public void setStaff(String staffName) {
-        this.staff = staff;
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
     public Integer getId() {
