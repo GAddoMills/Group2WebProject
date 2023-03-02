@@ -34,6 +34,11 @@ public class RentalController {
     @Autowired
     private StaffRepository staffRepo;
 
+    @GetMapping("index")
+    public String index(){
+        return "index";
+    }
+
     //SHOW ALL RENTALS
     @GetMapping("rentals")
     public String getRental(Model model){
