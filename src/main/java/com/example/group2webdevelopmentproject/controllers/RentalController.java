@@ -101,10 +101,23 @@ public class RentalController {
         Optional<Staff> staff = staffRepo.findById((short)dto.getStaffId());
 
         rental.setRentalDate(zonedrentalDate.toInstant());
-        rental.setInventory(inventory.get());
-        rental.setCustomer(customer.get());
+        if (inventory.isPresent()) {
+            rental.setInventory(inventory.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
+        if (customer.isPresent()) {
+            rental.setCustomer(customer.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
+
         rental.setReturnDate(zonedreturnDate.toInstant());
-        rental.setStaff(staff.get());
+        if (staff.isPresent()) {
+            rental.setStaff(staff.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
         rental.setLastUpdate(Instant.now());
 
         rentalRepo.saveAndFlush(rental);
