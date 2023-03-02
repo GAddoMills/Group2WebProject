@@ -93,24 +93,36 @@ public class RentalController {
     public String createdRental(@ModelAttribute("rentalToCreate") RentalDTO dto){
         Rental rental =new Rental();
 
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm ", Locale.UK);  // Specify locale to determine human language and cultural norms used in translating that input string.
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");  // Specify locale to determine human language and cultural norms used in translating that input string.
         LocalDateTime rentalDate = LocalDateTime.parse(dto.getRentalDate(), f);
         LocalDateTime returnDate = LocalDateTime.parse(dto.getReturnDate(), f);
 
-        ZoneId zoneId = ZoneId.of("UTC/Greenwich");
+        ZoneId zoneId = ZoneId.of("UTC-0");
         ZonedDateTime zonedrentalDate = rentalDate.atZone(zoneId);
         ZonedDateTime zonedreturnDate = returnDate.atZone(zoneId);
-
 
         Optional<Inventory> inventory = inventRepo.findById(dto.getInventory());
         Optional <Customer> customer = customerRepo.findById(dto.getCustomer());
         Optional<Staff> staff = staffRepo.findById((short)dto.getStaffId());
 
         rental.setRentalDate(zonedrentalDate.toInstant());
-        rental.setInventory(inventory.get());
-        rental.setCustomer(customer.get());
+        if (inventory.isPresent()) {
+            rental.setInventory(inventory.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
+        if (customer.isPresent()) {
+            rental.setCustomer(customer.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
+
         rental.setReturnDate(zonedreturnDate.toInstant());
-        rental.setStaff(staff.get());
+        if (staff.isPresent()) {
+            rental.setStaff(staff.get());
+        } else {
+            // TODO log warning and redirect to error
+        }
         rental.setLastUpdate(Instant.now());
 
         rentalRepo.saveAndFlush(rental);
