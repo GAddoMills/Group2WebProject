@@ -1,8 +1,7 @@
 package com.example.group2webdevelopmentproject.controllers;
 
-import com.example.group2webdevelopmentproject.entities.Customer;
-import com.example.group2webdevelopmentproject.entities.Film;
-import com.example.group2webdevelopmentproject.entities.Rental;
+import com.example.group2webdevelopmentproject.dtos.RentalDTO;
+import com.example.group2webdevelopmentproject.entities.*;
 import com.example.group2webdevelopmentproject.repository.CustomerRepository;
 import com.example.group2webdevelopmentproject.repository.InventoryRepository;
 import com.example.group2webdevelopmentproject.repository.RentalRepository;
@@ -15,8 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.Instant;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
 @Controller
 public class RentalController {
@@ -76,12 +78,29 @@ public class RentalController {
         return "rentalCreateForm";
     }
 
-    @PostMapping("rentals/createSuccess")
-    public String createdRentak(@ModelAttribute("rentalToCreate") Rental rental){
-        rental.setReturnDate(Instant.now());
-        rental.setReturnDate(Instant.now());
+    @PostMapping("rentals/add")
+    public String createdRental(@ModelAttribute("rentalToCreate") RentalDTO dto){
+        Rental rental =new Rental();
+
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm", Locale.UK);  // Specify locale to determine human language and cultural norms used in translating that input string.
+        LocalDateTime rentalDate = LocalDateTime.parse(dto.getRentalDate(), f);
+        LocalDateTime returnDate = LocalDateTime.parse(dto.getReturnDate(), f);
+
+/*        ZoneId zoneId = ZoneId.of("UTC/Greenwich");
+        ZonedDateTime zonedrentalDate = rentalDate.atZone(zoneId);*/
+
+        Optional<Inventory> inventory = inventRepo.findById(dto.getInventory());
+        Optional <Customer> customer = customerRepo.findById(dto.getCustomer());
+        Optional<Staff> staff = staffRepo.findById((short)dto.getStaffId());
+
+        rental.setRentalDate(rentalDate.toInstant(ZoneOffset.ofHours(0)));
+        rental.setInventory(inventory.get());
+        rental.setCustomer(customer.get());
+        rental.setReturnDate(returnDate.toInstant(ZoneOffset.ofHours(0)));
+        rental.setStaff(staff.get());
         rental.setLastUpdate(Instant.now());
-        rentalRepo.save(rental);
+
+        rentalRepo.saveAndFlush(rental);
         return "rentalCreatedSuccess";
     }
 

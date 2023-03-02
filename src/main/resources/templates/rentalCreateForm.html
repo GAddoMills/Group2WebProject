@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Rental</title>
+    <title>Add Actor</title>
     <link rel="stylesheet" href="../css/styleGroup2.css"/>
 
 </head>
@@ -11,17 +11,21 @@
     <li><a class=active href="http://localhost:8080/films">Films</a></li>
 
 </ul>
-<form action="/rentals/createSuccess" method="post">
-    <h1>Add Rental</h1>
-    <label for="Inventory">Inventory ID</label>
-    <input type="text" id="Inventory" name="inventory"><br><br>
+<h1>Add Rental</h1>
+<form th:action="@{/rentals/add}" th:object="${rentalToCreate}" method="post">
+    <label for="inventory">Inventory ID</label>
+    <input type="text" id="inventory" th:field="*{inventory}">
     <label for="Customer">Customer</label>
-    <input type="text" id="Customer" name="customer"><br><br>
+    <input type="text" id="Customer" th:field="*{customer}">
     <label for="Staff">Staff</label>
-    <input type="text" id="Staff" name="staff"><br><br>
+    <input type="text" id="Staff" th:field="*{staff}">
+    <label for="rentalDate">Rental Date</label>
+    <input type="text" id="rentalDate"  th:field="*{rentalDate}">
+    <label for="returnDate">Return Date</label>
+    <input type="text" id="returnDate" th:field="*{returnDate}">
+
 
     <input type="submit" value="Save">
 </form>
-
 </body>
 </html>

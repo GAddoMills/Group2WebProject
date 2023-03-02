@@ -19,10 +19,6 @@ public class Rental {
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
     @Column(name = "return_date")
     private Instant returnDate;
 
@@ -32,6 +28,18 @@ public class Rental {
 
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Integer getId() {
         return id;
@@ -55,14 +63,6 @@ public class Rental {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public Instant getReturnDate() {
