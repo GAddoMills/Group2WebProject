@@ -20,7 +20,7 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #ffe8ea;
 }
 
 /* for actor add and edit form */
@@ -29,6 +29,7 @@ h1 {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding-top: 20px;
 }
 
 form {
@@ -71,8 +72,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
+    border: 2px solid #791332;
+    background-color: #fbfbff;
     position: fixed;
     top: 0;
     width: 100%;
@@ -83,15 +84,18 @@ li {
 
 li a,.dropbtn {
     display: block;
-    color: #666;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 /* Change the link color to #111 (black) on hover */
 li a:hover{
-    background-color: burlywood;
+    background-color: #791332;
+    color: white;
 }
 .active {
-    background-color: darkslategray;
+    background-color: #791332;
+    color: white;
 }
+

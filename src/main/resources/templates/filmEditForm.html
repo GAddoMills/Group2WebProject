@@ -2,39 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Actor Details</title>
-    <link rel="stylesheet" href="../css/stylingSheet.css"/>
+    <title>Film Edit</title>
+    <link rel="stylesheet" href="../css/styleGroup2.css"/>
 </head>
-<body>
+<body class="imageBack">
 <ul>
     <li><a class=active href="http://localhost:8080/films">Films</a></li>
-    <li style="float:right"><a href="http://localhost:8080/actors/createForm">Create new Film</a></li>
+    <li style="float:right"><a href="http://localhost:8080/films/new">Create new Film</a></li>
 
 </ul>
 <h1>Films Edit Form</h1>
 <form th:action="@{/films/update}" th:object="${filmToEdit}" method="POST">
     <label for="title">Title</label>
-    <input type="text" id="title" name="title" th:field="*{title}"/>
-    <label for="description">description</label>
-    <input type="text" id="description" name="description" th:field="*{description}"/>
+    <input type="text" id="title" name="title" th:field="*{title}"/><br>
+    <label for="description">Description</label>
+    <input type="text" id="description" name="description" th:field="*{description}"/><br>
     <label for="Language">Language</label>
-    <input type="text" id="Language" name="Language" th:field="*{language}"/>
+    <input type="text" id="Language" name="Language" th:field="*{language}"/><br>
     <label for="releaseYear">Release Year</label>
-    <input type="text" id="releaseYear" name="releaseYear" th:field="*{releaseYear}"/>
+    <input type="text" id="releaseYear" name="releaseYear" th:field="*{releaseYear}"/><br>
     <label for="rentalDuration">Rental Duration</label>
-    <input type="text" id="rentalDuration" name="rentalDuration" th:field="*{rentalDuration}"/>
+    <input type="text" id="rentalDuration" name="rentalDuration" th:field="*{rentalDuration}"/><br>
     <label for="length">Length</label>
-    <input type="text" id="length" name="length" th:field="*{length}"/>
+    <input type="text" id="length" name="length" th:field="*{length}"/><br>
     <label for="replacementCost">Replacement Cost</label>
-    <input type="text" id="replacementCost" name="replacementCost" th:field="*{replacementCost}"/>
+    <input type="text" id="replacementCost" name="replacementCost" th:field="*{replacementCost}"/><br>
     <label for="rating">Rating</label>
-    <input type="text" id="rating" name="rating" th:field="*{rating}"/>
+    <input type="text" id="rating" name="rating" th:field="*{rating}"/><br>
     <label for="rating">Rental Rate</label>
-    <input type="text" id="rentalRate" name="rentalRate" th:field="*{rentalRate}"/>
+    <input type="text" id="rentalRate" name="rentalRate" th:field="*{rentalRate}"/><br>
     <label for="specialFeatures">Special Features</label>
-    <input type="text" id="specialFeatures" name="specialFeatures" th:field="*{specialFeatures}"/>
+    <input type="text" id="specialFeatures" name="specialFeatures" th:field="*{specialFeatures}"/><br>
     <input type = "hidden" id="id" name = "id" th:field="*{id}"/>
     <input type="submit" value="Submit Update"/>
 </form>
+
 </body>
 </html>

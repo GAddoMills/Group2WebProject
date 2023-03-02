@@ -10,11 +10,13 @@
     <li><a class=active href="http://localhost:8080/films">Films</a></li>
 
 </ul>
-<form th:action="@{/films/add}" th:object="${newFilm}" method="post">
+<form th:action="@{/films/add}" th:object="${newFilm}" method="POST">
     <h1>Add Film</h1>
-    <label for="title">Title: *</label><br>    <input type="text" id="title" th:field="*{title}"><br>    <label for="description">Description:</label><br>
-    <textarea id="description" th:field="*{description}" ></textarea>
-    <br>    <label for="language">Language: *</label><br>
+    <label for="title">Title: *</label><br>
+    <input type="text" id="title" th:field="*{title}"><br>
+    <label for="description">Description:</label><br>
+    <textarea id="description" th:field="*{description}" ></textarea><br>
+    <label for="language">Language: *</label><br>
     <select id="language" th:field="*{language}">
         <option value="English">English</option>
         <option value="French">French</option>
